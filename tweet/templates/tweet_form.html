@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+Ayus First Project
+{% endblock title %}
+
+{% block content %}
+
+<h1 class="text-center mt-4">Welcome to Ayus's project</h1> 
+{% comment %} <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form> {% endcomment %}
+<h2> {%if form.instance.pk %} 
+    Edit Tweet 
+    {%else %}
+    Create Tweet 
+    {% endif %}
+    <form method="post" enctype='multipart/form-data' class='form'>
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button class="btn btn-warning" type= 'submit'>Submit</button>
+    </form>
+    <a href="{% url 'tweet_list'%}"> Back to tweet_list</a>
+</h2>
+
+
+{% comment %} text:white hatako hai  {% endcomment %}
+{% endblock %}

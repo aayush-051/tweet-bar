@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+
+Ayus First Project
+{% endblock title %}
+
+{% block content %}
+
+<h1 class="text-center mt-4">Welcome to Ayus's Project</h1>      
+
+<a class = 'btn btn-primary mb-4' href="{% url "tweet_create" %} ">Create a Tweet</a>
+<div class="container row gap-3 d-flex " >
+   {% for tweet in tweets  %}
+   <div class="card" style="width: 18rem;">
+  <img src="{{tweet.photo.url}}"  class="card-img-top"  alt="Tweet Photo">
+  <div class="card-body">
+    <h5 class="card-title">{{tweet.user.username}}</h5>
+    <p class="card-text">{{tweet.text}}</p>
+    {%if tweet.user == user  %}
+    <a href="{% url 'tweet_edit' tweet.id  %}" class="btn btn-primary " >EDIT</a>
+    <a href="{% url 'tweet_delete' tweet.id  %}" class="btn btn-danger">DELETE</a>
+    {% endif %} 
+  </div>
+</div>
+   
+   {% endfor %}
+
+   <a href="{} "></a>
+{% comment %} text:white hatako hai  {% endcomment %}
+{% endblock %}
